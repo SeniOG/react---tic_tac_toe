@@ -4,15 +4,20 @@ import Square from './Square'
 function Board(){
 
     const [square , setSquare] = useState(Array(9).fill(null));
-    const [X, setX] = useState(true);
+    const [X, setPlayer] = useState(true);
 
     const winner = calculateWinner(square); 
     let status;
     if (winner){
-        status = 'Winner is ' + winner;
+        status = 'Winner: ' + winner;
     }
+
+    else if (winner!== true && square[0]!== null && square[1]!== null && square[2]!== null && square[3]!== null && square[4]!= null && square[5]!== null && square[6]!== null && square[7]!== null && square[8] !== null){
+        status = 'Tie';
+    }
+    
     else{
-        status = 'Player turn : ' + (X? "X":"O");
+        status = 'Next Player: ' + (X? "X":"O");
     }
 
     const renderSquare = (i) =>{
@@ -27,8 +32,11 @@ function Board(){
         if (squares[i] === null) {
             squares[i] = X ? 'X': 'O';
             setSquare(squares)
-            setX(!X);
+            setPlayer(!X);
         }
+
+        
+        
         
         
     }
@@ -81,4 +89,23 @@ function Board(){
     
 }
 
+/*function Reset(){
+    class Reset extends React.Component {
+        render(){
+            return(
+            <button className = 'reset'
+             onClick ={this.reset} >
+                Reset
+            </button>
+            ) 
+    
+        }
+    }
+    
+    reset = (square) => ({
+        square[0] = null
+        square[1] = null
+        square[2] = null
+    })
+}*/
 export default Board;
