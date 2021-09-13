@@ -1,32 +1,14 @@
 import React from 'react';
-import Board from './Board';
 
-class reset extends React.Component {
-    render(){
-        return(
-        <button className = 'reset'
-         onClick ={this.resetFunction} >
+function Reset(props) {
+  return (
+    <div>
+        <button className='reset' onClick={() => props.onClick()}>
             Reset
         </button>
-        ) 
+    </div>
 
-    }
+  )
 }
 
-const resetFunction = () => {
-    
-    Array(9).fill(null)
-    
-}
-
-/*const handleClick = (i) =>{
-    const squares = square.slice();
-
-    if (squares[i] === null) {
-        squares[i] = X ? 'X': 'O';
-        setSquare(squares)
-        setPlayer(!X);
-    }
-
-*/
-export default reset;
+export default Reset;

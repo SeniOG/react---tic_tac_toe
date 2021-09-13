@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import Square from './Square'
+import Reset from './Reset';
 
 function Board(){
 
@@ -64,6 +65,20 @@ function Board(){
         return null;
     }
 
+    function resetBoard() {
+        const squares = square.slice();
+        squares[0] = null
+        squares[1] = null
+        squares[2] = null
+        squares[3] = null
+        squares[4] = null
+        squares[5] = null
+        squares[6] = null
+        squares[7] = null
+        squares[8] = null
+        setSquare(squares)
+      }
+
     return (
         <div className="board">
             <div className="board-row">
@@ -84,28 +99,13 @@ function Board(){
             {renderSquare(8)}
             </div>
             {status}
+            <br/>
+            <br/>
+            <Reset onClick={() => resetBoard()}/>
         </div>
     )
-    
+
+        
 }
 
-/*function Reset(){
-    class Reset extends React.Component {
-        render(){
-            return(
-            <button className = 'reset'
-             onClick ={this.reset} >
-                Reset
-            </button>
-            ) 
-    
-        }
-    }
-    
-    reset = (square) => ({
-        square[0] = null
-        square[1] = null
-        square[2] = null
-    })
-}*/
 export default Board;
